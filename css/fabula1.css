@@ -139,6 +139,7 @@ h3 {
   text-shadow: 0.5px 0.5px 0.5px black;
 }
 
+.ejemplo,
 blockquote {
   font-size: 0.9em;
   background-color: white;
@@ -164,17 +165,23 @@ a {
 }
 
 a:hover {
-
   font-size: 1.1em;
 }
+
 .lista {
   list-style-type: none;
-  padding-left: 0;
+  /* padding-left: 0; */
 }
+
+.lista li {
+  margin: 3px 0 10px 0;
+
+}
+
 .lista li::before {
-  content: "✨ ";     /* Se puede poner cualquier icono, emoji o símbolo */
-  color: #f4a261;   /* Cambia el color */
+  content: "✔ ";     /* Se puede poner cualquier icono, emoji o símbolo */
+  color: darkred;   /* Cambia el color */
   font-size: 18px;    /* Ajusta el tamaño */
   font-weight: bold;
-  margin-right: 8px;  /* Separa la viñeta del texto */
+  margin-right: 8px;  /* Separa la viñeta del texto */  
 }
