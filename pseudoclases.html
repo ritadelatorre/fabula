@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pseudoelementos CSS</title>
+  <link rel="stylesheet" href="./css/fabula1.css">
+  <link rel="shortcut icon" href="./img/book.ico" type="image/x-icon">
+  <style>
+    html {
+      background-color: white;
+    }
+    body {
+      padding: 1em;
+      line-height: 1.4em;
+      background-color: #F2F3F4;
+    }
+    .ejemplo {
+      font-size: 0.9em;
+      background-color: white;
+      padding: 5px 25px;
+      border-left: darkred 4px solid;
+      width: 90%;
+      margin: 5px 0;
+      margin-left: 1.7em;
+    }
+    h1 {
+      color: darkred;
+      font-weight: 900;
+      font-size: 1.7em;
+      text-shadow: 0.5px 0.5px 0.5px black;
+    }
+    h2 {
+      background-color: darkred;
+      color: white;
+      text-shadow: 0.5px 0.5px 0.5px black;
+      padding: 3px;
+    }
+    code {
+      color: darkblue;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Pseudoclases relacionadas con hijos de un elemento</h1>
+  <p>Este tipo de pseudoclases permite:</p>
+  <ul>
+    <li>Alternar estilos</strong> (<code>nth-child(even)</code>, <code>nth-child(odd)</code>).</li>
+    <li>Aplicar estilos a elementos únicos</strong> (<code>only-child</code>, <code>only-of-type</code>).</li>
+    <li>Crear selecciones más específicas en una estructura HTML compleja</strong><br> (<code>first-of-type</code>, <code>last-of-type</code>, <code>nth-of-type</code>).</li>
+  </ul>  
+  <h2>Pseudoclases básicas</h2>
+  <ul class="lista">
+    <li><code>:first-child</code>: Selecciona el <strong>primer
+        hijo</strong> de su padre.</li>
+    <li><code>:last-child</code>: Selecciona el <strong>último hijo</strong>
+      de su padre.</li>
+    <li><code>:nth-child(n)</code>: Selecciona el <strong>n-ésimo hijo</strong>
+      <div class="ejemplo">
+        <code>div:nth-child(3) { border: 1px solid red; }</code><br>
+        Selecciona el <strong>selecciona el tercer hijo de los <code>div</code></strong> y le aplica un borde rojo.
+      </div>
+    </li>
+    <li><code>:nth-child(even)</code> : Selecciona los <strong>hijos en posiciones pares</strong>(<code>2, 4, 6, ...</code>).</li>
+    <li><code>:nth-child(odd)</code> : Selecciona los <strong>hijos en posiciones impares</strong> (<code>1, 3, 5, ...</code>).<br>
+    <p>Esta pseudoclase junto con la anterior, permite lograr el efecto pijama en tablas.</p> Ejemplo:
+    <div class="ejemplo">
+    <code>
+    tr:nth-child(even) {<br>
+    &nbsp;&nbsp;background-color: gainsboro; <kbd>/* Color gris claro para filas pares */</kbd><br>
+    }<br>
+    <br>
+    tr:nth-child(odd) {<br>
+    &nbsp;&nbsp;background-color: white; <kbd>/* Color blanco para filas impares */</kbd><br>
+    }</code>
+    </div>    
+    </li>
+  </ul>
+  <h2>Pseudoclases más avanzadas</h2>
+  <ul class="lista">
+    <li><code>:nth-last-child(n)</code>: Igual que <code>:nth-child(n)</code>, pero <strong>contando desde el final</strong>. Ejemplo:
+      <div class="ejemplo">
+        <code>:nth-last-child(2) { color: red; }</code><br>
+        Selecciona el <strong>segundo hijo contando desde el final</strong>.
+      </div>
+    </li>
+    <li><code>:only-child</code>: Selecciona el hijo <strong>único</strong> dentro de su padre. Ejemplo:
+      <div class="ejemplo">
+        <code>div:only-child { font-weight: bold; }</code><br>
+        Esta regla se aplica <strong>solo si el <code>div</code> no tiene hermanos</strong>.
+      </div>
+    </li>
+    <li>
+      <code>:first-of-type</code>: Selecciona el <strong>primer hijo de un tipo específico</strong> dentro de su padre. Ejemplo:
+      <div class="ejemplo">
+        <code>article p:first-of-type { color: blue; }</code><br>
+        Selecciona el <strong>primer <code>&lt;p&gt;</code> dentro de <code>&lt;article&gt;</code>, sin importar otros elementos</strong>.
+      </div>
+    </li>
+    <li>
+      <code>:last-of-type</code>: Selecciona el <strong>último hijo de un tipo específico</strong> dentro de su padre. Ejemplo:
+      <div class="ejemplo">
+        <code>article p:last-of-type { color: green; }</code><br>
+        Selecciona el <strong>primer <code>&lt;p&gt;</code> dentro de <code>&lt;article&gt;</code>, sin importar otros elementos</strong>.
+      </div>
+    </li>     
+    <li>
+      <code>:nth-of-type(n)</code>: Selecciona el <strong>n-ésimo hijo de un tipo específico</strong> dentro de su padre. Ejemplo:
+      <div class="ejemplo">
+        <code>div p:nth-of-type(3) { font-size: 20px; }</code><br>
+        Selecciona el <strong>tercer <code>&lt;p&gt;</code> dentro de <code>&lt;div&gt;</code></strong>, sin importar otros tipos de hijos.
+      </div>
+    </li>   
+    <li>
+      <code>:nth-last-of-type(n)</code> : Igual que <code>:nth-of-type(n)</code>, pero <strong>contando desde el final</strong>. Ejemplo:
+      <div class="ejemplo">
+        <code>div p:nth-last-of-type(2) { color: orange; }</code><br>
+        Selecciona el <strong>segundo <code>&lt;p&gt;</code> desde el final dentro de <code>&lt;div&gt;</code></strong>.
+      </div>
+    </li>
+    <li>
+      <code>:only-of-type</code>: Selecciona <strong>si es el único elemento de su tipo dentro de su padre</strong>.Ejemplo:
+      <div class="ejemplo">
+        <code>section h1:only-of-type { text-transform: uppercase; }</code><br>
+        Se aplica solo si <strong>es el único <code>&lt;h1&gt;</code> dentro de <code>&lt;section&gt;</code></strong>.
+      </div>
+    </li>
+  </ul>
+
+</body>
+
+</html>
