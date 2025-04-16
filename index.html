@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/fabula1.css">
+  <link rel="shortcut icon" href="./img/chicken.ico" type="image/x-icon">
+
+  <title>Fábulas</title>
+</head>
+<body>
+  <section id="s1">
+    <h1><b>pseudo-clases</b> y <b>pseudo-elementos</b></h1>
+    <h2>Instrucciones</h2>
+    <p>En esta práctica trabajaremos con <b>pseudo-clases</b> y <b>pseudo-elementos</b> así como con <b>elementos hijos</b>. </p>
+    <p><strong>Los textos de cada fábula deberán quedarte como el del siguiente enlace</strong> ( <a href="fabula.html" target="_blank">La gallina de los huevos de oro</a> ).</p>
+    <ul>
+      <li>Copia las fábulas de los diez desplegables al final de este documento, en un archivo html y enciérra a cada una de ella entre las etiquetas <code>&lt;article>.</code></li>
+      <li>Crea un título para cada fábula dentro de un elemento <code>&lt;h2>.</code> usando el del <code>&lt;summary></code></li>
+      <li>Encierra los párrafos en un elemento <code>&lt;p>.</code> Al último párrafo de cada fábula asignale la clase <code>.moraleja</code> y bórra la palabra <q>Moraleja</q> del mismo. (La generaremos con un pseudoelemento.)</li>
+      <li>Encierra los nombres de los autores entre las etiquetas <code>&lt;address>...&lt;/address></code></li>
+    </ul>
+    <h3>¡Que comience la magia!...</h3>
+    <ul>
+      <li>Importa de <a href="https://fonts.google.com/?query=fontdiner" target="_blank" rel="noopener">Google Fonts</a> el tipo de letra <b>Fontdiner Swanky</b>. Coloca la  declaración de importación en la primera línea de tu archivo css. (La instrucción <code>@import</code> la ofrece el propio Google.)
+      <pre><code>
+        @import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap');
+      </code></pre>
+      <li>Ahora importa tu sólo un tipo de fuente que simule una firma a mano y coloca la declaración de importación bajo la anterior.</li>
+      </li>    
+      <li>Crea una regla para <code>article</code> asignandole un <code>margin</code> de <code>10px</code>.</li>
+      <li>Crea la siguiente regla css para los <code>h2</code> que sean <b>hijos directos</b> de <code>article</code>
+      <pre><code>
+        article > h2 {
+          background-color: #F2C1D1;
+          color: white;
+          font-size: 1.6em;
+          text-shadow:  1px 1px 0.5px #D4AF37, 1px 1px 12px black;
+          font-family: "Fontdiner Swanky", serif;
+          text-align: center;
+          padding: 8px;
+          margin: 1em 20px;
+          border-radius: 6px;
+        }
+      </code></pre>
+      </li>
+      <li>Crea la siguiente regla css para las imágenes que sean <b>hijas directos</b> de <code>article</code>
+      <pre><code>
+        article > img {
+          <mark>float: right;</mark> <kbd>/* Coloca la imagen a la derecha y hace que el texto fluya alrededor */</kbd>
+          width: 25%;
+          height: auto;
+        }
+      </code></pre>
+      </li>
+      <li>Crea ahora tú sólo/a una regla css para los párrafos que sean hijos directos de <code>article</code> indicando que estén justificados.</li>
+      <li>Crearemos ahora una regla para la primera letra del primer párrafo de cada artículo:
+      <pre><code>
+        article > p:first-of-type::first-letter {
+          font-family: "Fontdiner Swanky", serif;
+          font-size: 3em;    <kbd>/* Aumenta el tamaño para que ocupe varias líneas */</kbd>
+          line-height: 1.5;
+          color: white;
+          background-color: #81D8D0;
+          text-shadow: 0.5px 0.5px 0.5px black;
+          padding: 0 7px;
+          <mark>float: left;</mark> <kbd>/* Hace que el texto fluya alrededor */</kbd>
+          margin-right: 10px;
+        }
+      </code></pre>
+      </li>
+      <li>Y para el último párrafo de cada artículo:
+      <pre><code>
+        article > p:last-of-type::after {
+          content: "";
+          display: block;
+          width: 100%;      <kbd>/* Ajusta el tamaño según necesites */</kbd>
+          height: 50px;     <kbd>/* Alto de la imagen separadora */</kbd>
+          background-image: url(<mark>"../img/divider.png"</mark>); 
+          background-repeat: no-repeat;
+          background-position: center;
+          margin-top: 20px; <kbd>/* Espacio entre el párrafo y la imagen */</kbd>
+          background-size: contain;
+        }
+      </code></pre>
+      <ul>
+        <li>Descarga la <a href="./img/divider.png" target="_blank" download="divider.png">imagen separadora</a> y guárdala en tu carpeta <code>img</code>.
+        </li>
+      </ul>
+      </li>
+    </ul>  
+    
+    <blockquote>
+      <p>Los selectores <code>:first-of-type</code> y <code>:last-of-type</code> son una <b>pseudoclases</b>, mientras que <code>::first-letter</code> y <code>::after</code> son <b>pseudoelementos</b>.</p>
+      <p>Recordemos la <a href="https://ritadelatorre.github.io/IFCD0110/CSS-1.pdf" target="_blank" rel="noopener">diferencia entre pseudo-clases y pseudo-elementos</a> (DIAPOSITIVA 3) </p>
+      <p>Para encontrar una referencia completa de <b>pseudoclases</b> y <b>pseudoelementos</b> en CSS, consulta la documentación de <b>MDN Web Docs</b>, que tiene explicaciones detalladas y ejemplos prácticos:</p>  
+      <ul>
+        <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/es/docs/Web/CSS/Pseudo-classes">Lista de pseudoclases en CSS</a>: Explica cómo funcionan las pseudo clases y cuándo usarlas.</li>  
+        <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Styling_basics/Pseudo_classes_and_elements">Pseudoclases y pseudoelementos</a>: Guía completa sobre cómo aplicarlos correctamente.</li>  
+        <li><a target="_blank" rel="noopener" href="https://www.byronvargas.com/web/como-distinguimos-entre-una-pseudo-clase-y-un-pseudo-elemento/">Diferencias entre pseudoclases y pseudoelementos</a>: Explicación clara sobre cómo distinguirlos.</li>  
+      </ul>
+    </blockquote>
+    <ul>
+      <li>Crea las siguientes reglas css para la etiqueta <code>&lt;address></code>:
+        <ul type="cercle">
+          <li>Texto alineado a la derecha</li>
+          <li>El tipo de letra <em>manuscrito</em> que haya elegido de Google Fonts</li>
+          <li>Color de Fuente: otro diferente a negro</li>
+          <li>Ajusta el tamaño de la fuente</li>
+        </ul>
+      </li>
+    </ul>
+    <blockquote>
+      <p>La etiqueta <code>&lt;address></code> suele contener información como el nombre del autor, su email, su sitio web o detalles de contacto.<br>Se usa especialmente en pies de página o dentro de un <code>&lt;article></code> para dar crédito al autor. No se debe usar para direcciones genéricas (por ejemplo, de una empresa), sino específicamente para identificar a un autor o a un contacto.</p>
+    </blockquote>
+    <p>Por último programaremos con css el cuadro para la <b>Moraleja</b>. Para ello, crearemos una clase llamada <b><code>.moraleja</code></b> la cual tendrá las siguientes características:</p>
+    <ul>
+      <li>Clase <b><code>.moraleja</code></b>:
+        <ul>
+          <li>Ancho: 80%</li>
+          <li>Centrada</li>
+          <li>Color de fondo, gris oscuro y letra blanca</li>
+          <li>Texto centrado</li>
+          <li>Bordes redondeados</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Crearemos a la clase <b><code>.moraleja</code></b> un pseudoelemento <code>::before</code> que coloque automáticamente antes del párrafo con la clase moraleja, el texto <q>Moraleja</q>.</p>
+    <ul>
+      <li>Copia el siguiente código para crear el pseudoelemento <code>::before</code> a la clase <code>.moraleja</code>:
+      <pre><code>
+.moraleja::before {
+  content: "Moraleja";
+  font-family: "Fontdiner Swanky", serif;
+  color: #FFE4E1;
+  text-shadow: 0.5px 0.5px 0px #F2C1D1;
+  letter-spacing: 1px;
+  font-weight: normal;
+  font-size: 1.1em;
+  display: block; <kbd>    /* Forzamos que la palabra "Moraleja" ocupe toda una línea */</kbd>
+  text-align: center; <kbd>/* Para centrar el texto */</kbd>
+  margin-bottom: 5px; <kbd>/* Espacio entre el título y el párrafo */</kbd>
+}
+      </code></pre>
+      </li>
+    </ul>
+
+  </section>
+  <hr>
+  <section id="s2">
+    <h2>Diez fábulas con moraleja. <mark>Textos para copiar</mark></h2>
+    <details><summary>1. La gallina de los huevos de oro</summary>
+    <p>Érase un labrador tan pobre tan pobre que ni siquiera poseía una vaca. Era el más pobre de la aldea.<br>Y resulta que un día, trabajando en el campo y lamentándose de su suerte, apareció un enanito que le dijo:</p>
+    
+    <p>—Buen hombre, he oído tus lamentaciones y voy a hacer que tu fortuna cambie. Toma esta gallina. Es tan maravillosa que todos los días pone un huevo de oro.</p>
+
+    <p>El enanito desapareció sin más ni más y el labrador llevó la gallina a su corral. Al día siguiente, ¡oh sorpresa!, encontró un huevo de oro. Lo puso en una cestita y se fue con ella a la ciudad, donde vendió el huevo por un alto precio. Al día siguiente, loco de alegría, encontró otro huevo de oro. ¡Por fin la fortuna había entrado a su casa y todos los días tenía un nuevo huevo! Fue así como poco a poco, con el producto de la venta de los huevos, fue convirtiéndose en el hombre más rico de la comarca. Sin embargo, una insensata avaricia hizo presa su corazón y pensó:</p>
+
+    <p>«¿Por qué esperar a que cada día la gallina ponga un huevo? Mejor la mato y descubriré la mina de oro que lleva dentro».</p>
+
+    <p>Y así lo hizo, pero en el interior de la gallina no encontró ninguna mina. A causa de la avaricia tan desmedida que tuvo, este tonto aldeano malogró la fortuna que tenía.</p>
+
+    <address>Félix María de Samaniego</address>
+
+    <p>Moraleja: Quien se desespera por obtener riquezas se arriesga a perderlo todo.</p>
+    </details>
+
+    <details><summary>2. Las moscas y la miel</summary>
+      <p>De un panal se derramó su deliciosa miel, y las moscas acudieron ansiosas a devorarla. Y era tan dulce que no podían dejarla. Pero sus patas se fueron prendiendo en la miel y no pudieron alzar el vuelo de nuevo. Ya a punto de ahogarse en su tesoro, exclamaron:</p>
+
+      <p>—¡Nos morimos, desgraciadas nosotras, por quererlo tomar todo en un instante de placer!</p>
+
+      <p>Esopo</p>
+
+      <p>Moraleja: hay que saber disfrutar de los placeres de la vida, pero de manera prudente.</p>
+    </details>
+
+    <details><summary>3. La zorra y las uvas</summary>
+      <p>En una mañana de otoño, mientras una zorra descansaba debajo de una plantación de uvas, vio unos hermosos racimos de uvas ya maduras colgando delante de sus ojos. Deseosa de comer algo refrescante y distinto de lo que estaba acostumbrada, la zorra se levantó, se remangó y se puso manos a la obra para comer las uvas.</p>
+
+      <p>Lo que la zorra no sabía es que los racimos de uvas estaban mucho más altos de lo que ella imaginaba. Entonces, buscó un medio para alcanzarlos. Saltó y saltó, pero no conseguía ni tocarlos.</p>
+
+      <p>Había muchas uvas, pero la zorra no podía alcanzarlas. Tomó carrera y saltó otra vez, pero el salto quedó corto. Aun así, la zorra no se dio por vencida. Tomó carrera otra vez y volvió a saltar, pero nada. Las uvas parecían estar cada vez más altas y lejanas.</p>
+
+      <p>Cansada por el esfuerzo y sintiéndose incapaz de alcanzar las uvas, la zorra se convenció de que era inútil repetir el intento y sintió una profunda frustración. Agotada y resignada, decidió renunciar a las uvas.</p>
+
+      <p>Cuando se disponía a regresar al bosque, se dio cuenta de que un pájaro que volaba por allí había observado toda la escena y se sintió avergonzada. Creyendo que había hecho un papel ridículo en su intento de alcanzar las uvas, la zorra se dirigió al pájaro y le dijo:</p>
+
+      <p>—Yo habría conseguido alcanzar las uvas si hubieran estado maduras. Me equivoqué al principio pensando que estaban maduras, pero cuando me di cuenta de que estaban aún verdes, preferí desistir de alcanzarlas. Las uvas verdes no son un buen alimento para un paladar tan refinado como el mío.</p>
+
+      <p>Y así fue, la zorra siguió su camino, intentando convencerse de que no fue por su falta de esfuerzo por lo que ella no había comido aquellas riquísimas uvas. Y sí porque estaban verdes.</p>
+
+      <p>Esopo</p>
+
+      <p>Moraleja: Si tienes interés de verdad por conseguir algo, no desistas. Esfuérzate y persevera hasta conseguirlo, sin poner excusas ni fingir.</p>
+    </details>
+
+    <details><summary>4. La tortuga y la liebre</summary>
+      <p>Había una vez una liebre muy vanidosa que se pasaba todo el día presumiendo de lo rápido que podía correr. Cansada de siempre escuchar sus alardes, la tortuga la retó a competir en una carrera.</p>
+
+      <p>—¡Qué chistosa que eres, tortuga, debes estar bromeando! —dijo la liebre mientras se reía a carcajadas.</p>
+
+      <p>—Ya veremos, liebre. Guarda tus palabras hasta después de la carrera —respondió la tortuga.</p>
+
+      <p>Al día siguiente los animales del bosque se reunieron para presenciar la carrera. Todos querían ver si la tortuga en realidad podía vencer a la liebre. El oso les dio la salida gritando:</p>
+
+      <p>—¡En sus marcas, listos, ya!</p>
+
+      <p>La liebre se adelantó inmediatamente, corrió y corrió más rápido que nunca. Luego miró hacia atrás y vio que la tortuga se encontraba a unos pocos pasos de la línea de inicio.</p>
+
+      <p>«Tortuga lenta e ingenua —pensó la liebre—. ¿Por qué habrá querido competir si no tiene ninguna oportunidad de ganar?».</p>
+
+      <p>Confiada en que iba a vencer, la liebre decidió parar en medio del camino para descansar debajo de un árbol. La fresca y agradable sombra era muy relajante y así la liebre se quedó dormida.</p>
+
+      <p>Mientras tanto, la tortuga siguió caminando despacio, pero sin pausa. Estaba decidida a no darse por vencida. Pronto se encontró con la liebre durmiendo plácidamente y poco a poco se acercó a la meta. Todos los animales del bosque comenzaron a gritar de emoción y los gritos despertaron a la liebre, que no podía dar crédito a sus ojos: la tortuga estaba cruzando la meta y ella había perdido la carrera.</p>
+
+      <p>Esopo</p>
+
+      <p>Moraleja: Hay que tener una buena actitud y no burlarse de los demás, porque se puede conseguir más con constancia y disciplina que con prisa y descuido.</p>
+    </details>
+
+    <details><summary>5. El pastor y el lobo</summary>
+      <p>Érase una vez un pequeño pastor que se pasaba la mayor parte del tiempo paseando y cuidando de sus ovejas. Todas las mañanas salía a la pradera con su rebaño y muchas veces pensaba en las cosas que podía hacer para divertirse. Un día tuvo una idea. Decidió que pasaría un buen rato divirtiéndose a costa de la gente del pueblo. Se acercó y empezó a gritar:</p>
+
+      <p>—¡Socorro, el lobo! ¡Que viene el lobo!</p>
+
+      <p>Los aldeanos cogieron lo que tenían a mano y fueron a ayudar al pobre pastorcito que pedía auxilio, pero cuando llegaron allí, descubrieron que todo había sido una broma pesada y lo vieron reírse a carcajadas. Se enfadaron y se fueron, pero como el pastor se había divertido mucho, repitió la broma. Así que cuando los vio ya suficientemente lejos, volvió a gritar:</p>
+    
+      <p>—¡Socorro, el lobo! ¡Que viene el lobo!</p>
+
+      <p>Ellos volvieron corriendo, pensando que esta vez sí que se había presentado el lobo y que realmente el pastor necesitaba de su ayuda. Pero al llegar, se lo encontraron de nuevo riéndose por los suelos. Esta vez los aldeanos se enfadaron aún más y se fueron.</p>
+
+      <p>A la mañana siguiente el pastor, sin haberse arrepentido de lo que había hecho, decidió repetir la broma, pero no se dio cuenta de que sí había un lobo cerca. Cuando se dio media vuelta y lo vio, se asustó muchísimo y empezó a gritar desesperadamente:</p>
+
+      <p>—¡Socorro, el lobo! ¡Que viene el lobo! ¡Que va a devorar todas mis ovejas! ¡Auxilio, por favor!</p>
+
+      <p>Pero sus gritos fueron en vano porque los aldeanos, sabiendo las mentiras del pastor, esta vez no le hicieron caso. Así que el lobo, a pesar de los gritos desesperados del pastor, se abalanzó sobre sus ovejas y se las comió, y el chico no pudo hacer nada. Así fue cómo reconoció que había sido muy injusto con la gente del pueblo y se había portado mal, y aunque ya era tarde, se arrepintió profundamente y nunca más volvió burlarse ni a mentir a los demás.</p>
+
+      <p>Esopo</p>
+
+      <p>Moraleja: El valor de la verdad es fundamental para uno mismo y para los demás.</p>
+    </details>
+
+    <details><summary>6. El león y el conejo</summary>
+      <p class="destacada">Vivía en el bosque un terrible león que tenía atemorizados a todos los animales porque devoraba a todo aquel que se cruzaba en su camino. Los habitantes del bosque entonces le propusieron un acuerdo; cada día le enviarían un animal a condición de que dejara a los demás tranquilos.</p>
+
+      <p>El león, que aunque fiero era algo perezoso, aceptó, pensando que así se ahorraría el esfuerzo de tener que salir a cazar, y durante un tiempo el trato se mantuvo, enviando cada día un animal que aceptaba con resignación su triste destino por el bien de todos. Cuando un día le tocó el turno al conejo, este no acudió asustado a la terrible cita, e incluso se permitió llegar tarde, lo que enfureció al león:</p>
+      
+      <p>—¿Por qué llegas tarde? —gritó.</p>
+
+      <p>—Venía camino de tu cueva cuando me topé con un león aún más fiero que tú. Me dijo que él era el verdadero rey y que tú eras solo un bobo.</p>
+
+      <p>Como es lógico, estas palabras despertaron su furia, así que pidió al conejo que lo llevara en presencia de aquel impostor. El conejo lo llevó hasta un pozo y le señaló dónde vivía.</p>
+
+      <p>Al asomarse, el león vio su reflejo en el agua e interpretó que se trataba del otro león. Rugió con fuerza, pero su rugido retornó con el doble de fuerza por el eco de las paredes del pozo, lo que le hizo creer que el león intruso lo estaba retando de nuevo. Así que se lanzó a por él, y cayó al pozo y murió ahogado.</p>
+
+      <p>Tomás de Iriarte</p>
+
+      <p>Moraleja: Puedes ser poderoso y con mal genio, pero también caer vencido ante alguien más pequeño y débil pero más ingenioso.</p>
+    </details>
+
+    <details><summary>7. El pato y la serpiente</summary>
+      <p>Un pato, más orgulloso que agradecido de su suerte, se paseaba por la orilla de un estanque mientras se decía: «¡Cuánto valgo! Más que nadie, desde luego, puesto que ningún otro animal tiene los dones que yo poseo. Soy de agua, tierra y aire; si me canso de nadar, lo mismo soy capaz de echar a andar que de remontar el vuelo».</p>
+
+      <p>Entonces lo escuchó una serpiente, muy observadora y de lengua aguda, y le respondió:</p>
+
+      <p>—Menos humos, señor pato. No nada usted como los peces, ni corre como el gamo ni vuela como el águila. Todo lo hace, sí, pero solo a medias.</p>
+
+      <p>El pato, entendiendo la lección, se quedó callado y en silencio meditando.</p>
+
+      <p>Tomás de Iriarte</p>
+
+      <p>Moraleja: Es más valioso tener una sola habilidad bien aprendida que muchas a medias y encima presumir.</p>
+    </details>
+
+    <details><summary>8. La cigarra y la hormiga</summary>
+      <p>Era verano y hacía calor. Una cigarra descansaba plácidamente bajo la sombra de un arbusto, mientras observaba a la hormiga trabajar sin descanso. La pobre hormiga iba y venía del campo a su hormiguero, llevando encima pesados granos de trigo, mientras que la cigarra canturreaba sin parar.</p>
+      
+      <p>–Ven a descansar conmigo, hormiga, que hace calor. ¿Para qué trabajas tanto? —le recriminó la cigarra.</p>
+
+      <p>—Necesito guardar mucho alimento para el invierno —contestó ella—. Cuando comience a helar, no quedará nada.</p>
+
+      <p>—¡Aún falta mucho! Yo prefiero disfrutar de la vida y del momento —exclamó orgullosa la cigarra.</p>
+
+      <p>—Deberías recoger comida como yo lo hago, cigarra. Si no, luego te lamentarás.</p>
+
+      <p>El tiempo pasó deprisa y llegó el otoño, y con él, las primeras heladas. El invierno no tardó en llegar también y la cigarra, que se había quedado sin comida, fue a visitar a la hormiga:</p>
+
+      <p>—Amiga hormiga, por favor, ¿puedes darme algo de alimento? No tengo nada para comer.</p>
+
+      <p>La hormiga la miró enfadada:</p>
+
+      <p>–Ya te avisé y no me hiciste caso. En lugar de descansar tanto tendrías que haber pensado en este momento. Ahora tendrás que buscarte la comida.</p>
+
+      <p>Y entonces echó a la cigarra de su casa.</p>
+
+      <p>Esopo (y versionada también por La Fontaine y Samaniego)</p>
+
+      <p>Moraleja: Si solo piensas en el presente y no te adelantas al futuro, luego puedes tener problemas. Antes de disfrutar hay que trabajar.</p>
+    </details>
+
+    <details><summary>9. El perro y el cocodrilo</summary>
+      <p>Intentaba beber un perro en un río, pero no dejaba de moverse de un lado a otro, por lo que le era muy difícil calmar su sed. Sin embargo, no paraba de moverse. Entonces, un cocodrilo que lo observaba dijo:</p>
+
+      <p>—Detente de una vez. ¿Es que no te das cuenta de que así no puedes beber tranquilo? Yo que tú paraba unos segundos para beber del río.</p>
+
+      <p>El perro, sin dejar de moverse de un lado a otro, le dijo:</p>
+
+      <p>—Eso es lo que tú quieres, cocodrilo. Te piensas que no sé cuáles son tus intenciones reales. Prefiero beber con más dificultad a que me claves el diente.</p>
+
+      F<p>élix María de Samaniego</p>
+
+      <p>Moraleja: No hay que fiarse de los consejos de quien puede ser tu enemigo.</p>
+    </details>
+
+    <details><summary>10. La zorra y la cigüeña</summary>
+      <p>Cuenta la historia que una zorra invitó a una cigüeña a comer en su casa, pero cuando esta llegó, se encontró con que la zorra había servido sopa en platos hondos. Y así la cigüeña no pudo comer. Ella se entristeció, pero no dijo nada y, a la primera oportunidad, convidó a la zorra a su casa. Esta vez, le sirvió zumo en un recipiente de cuello largo y estrecho en el que la zorra no podía meter el hocico. Esta tuvo que resignarse mientras la cigüeña decía:</p>
+
+      <p>—Amiga, me hiciste pasar hambre deliberadamente cuando me invitaste a tu casa, así que hoy te he hecho lo mismo que tú a mí.</p>
+
+      <p>Esopo</p>
+
+      <p>Moraleja: Hay que tratar a los demás como deseas que te traten a ti, y si no lo haces, luego no hay que quejarse de las consecuencias.</p>
+    </details>
+
+    <p><cite>Del blog: <a href="https://saposyprincesas.elmundo.es/" target="_blank" rel="noopener">https://saposyprincesas.elmundo.es/</a></cite></p>
+  </section>
+</body>
+</html>
